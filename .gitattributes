@@ -1,0 +1,7 @@
+* text=auto
+
+# VBA and VB6 files are stored with CRLF line endings exactly as the VBA
+# editor exports them, so a raw download can be imported without conversion.
+*.bas -text diff
+*.cls -text diff
+*.frm -text diff
