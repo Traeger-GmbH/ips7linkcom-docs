@@ -18,3 +18,29 @@ Public Sub ReadTemperature()
 
     Call connection.Close
 End Sub
+
+'DOC
+Public Sub ReadTemperatureWithErrorHandling()
+    Dim connection As PlcDeviceConnection
+    On Error GoTo Failed
+
+    Dim device As SimaticDevice
+    Set device = New_SimaticDevice( _
+            New_IPDeviceEndPoint("192.168.0.80"), SimaticDeviceType_S7300_400)
+
+    Set connection = device.CreateConnection()
+    Call connection.Open
+
+    Dim temperature As Single
+    temperature = connection.ReadReal("DB10.DBD 20")
+    Debug.Print "Current Temperature is " & temperature & " C"
+
+    Call connection.Close
+    Exit Sub
+
+Failed:
+    Debug.Print "Error " & Hex$(Err.Number) & ": " & Err.Description
+
+    On Error Resume Next
+    If (Not connection Is Nothing) Then Call connection.Close
+End Sub

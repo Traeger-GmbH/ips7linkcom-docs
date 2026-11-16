@@ -24,3 +24,16 @@ Public Sub PrintLicense()
         Debug.Print "Support until " & licenser.SupportExpiryDate
     End If
 End Sub
+
+'DOC
+Public Function CheckLicense() As Boolean
+    Dim licenser As New ComLicenser
+
+    If (licenser.IsEvaluation) Then
+        Debug.Print "No license key, the SDK runs as evaluation."
+    ElseIf (licenser.IsExpired) Then
+        Debug.Print "The license expired on " & licenser.ExpiryDate
+    End If
+
+    CheckLicense = Not licenser.IsEvaluation And Not licenser.IsExpired
+End Function

@@ -20,3 +20,11 @@ End Sub
 Public Sub WriteText(ByVal connection As PlcDeviceConnection)
     Call connection.WriteString("DB111.DBB 100", "Hello World!")
 End Sub
+
+'DOC
+Public Sub WriteTextWithLength(ByVal connection As PlcDeviceConnection)
+    Dim message As PlcString
+    Set message = New_PlcString("DB111.DBB 100", "", 16)
+
+    Call message.SetValueUsingConnection(connection, "Hello World!")
+End Sub

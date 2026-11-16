@@ -41,3 +41,19 @@ Public Sub CheckStatus(ByVal speed As PlcInt32)
         Debug.Print "Speed: " & speed.Status.Text
     End If
 End Sub
+
+'DOC
+Public Sub ReadStations(ByVal connection As PlcDeviceConnection)
+    Dim counter As PlcInt32
+    Set counter = New_PlcInt32("DB10.DBD 0")
+
+    Dim stationCounter As PlcInt32
+    Dim station As Integer
+
+    For station = 0 To 2
+        Set stationCounter = counter.Relocate(station)
+        Call stationCounter.GetValueUsingConnection(connection)
+
+        Debug.Print "Station " & (station + 1) & ": " & stationCounter.Value
+    Next
+End Sub

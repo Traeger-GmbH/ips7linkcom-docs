@@ -31,3 +31,11 @@ Public Function CreateDeviceWithoutHelper() As SimaticDevice
     Set CreateDeviceWithoutHelper = deviceFactory.Create( _
             endPointFactory.Create("192.168.0.80"), SimaticDeviceType_S71500)
 End Function
+
+'DOC
+Public Sub PrintEndPoint(ByVal device As SimaticDevice)
+    Dim endPoint As IPDeviceEndPoint
+    Set endPoint = device.EndPoint
+
+    Debug.Print endPoint.Address & ", rack " & endPoint.Rack & ", slot " & endPoint.Slot
+End Sub
