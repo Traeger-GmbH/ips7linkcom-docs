@@ -1,6 +1,6 @@
-# TLX-S LINK SDK for COM Docs
+# TLX-S LINK COM SDK Docs
 
-Here you will find the code snippets in VBA to document the development of SIMATIC S7 connected applications using our TLX-S LINK SDK for COM (formerly IP S7 LINK SDK for COM). The snippets also run in VB6.
+Here you will find the code snippets in VBA to document the development of SIMATIC S7 connected applications using our TLX-S LINK COM SDK (formerly IP S7 LINK SDK for COM). The snippets also run in VB6.
 
 ## Code Snippets
 
